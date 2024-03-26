@@ -14,13 +14,13 @@ This project focuses on building a ride sharing app within the AWS ecosystem. Th
 
 
 ## Key Features:
-•	All the code is provided by AWS and we need a way to get it into a source control system
-•	We need to be able to handle permissions for the code
-•	A place to host the website and also make updates
-•	A way for users to register and login
-•	We need some ride sharing functionality
-•	Somewhere to store and return the ride results
-•	We need a way to invoke the ride sharing functionality from the browser
+1. All the code is provided by AWS and we need a way to get it into a source control system
+2. We need to be able to handle permissions for the code
+3. A place to host the website and also make updates
+4. A way for users to register and login
+5. We need some ride sharing functionality
+6. Somewhere to store and return the ride results
+7. We need a way to invoke the ride sharing functionality from the browser
 
 
 ## Steps :
