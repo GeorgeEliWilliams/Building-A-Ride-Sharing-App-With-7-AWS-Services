@@ -24,7 +24,46 @@ This project focuses on building a ride sharing app within the AWS ecosystem. Th
 
 
 ## Steps :
-### Step 1 :
+### Step 1 : Create a new repository in AWS CodeCommit
+For getting the html,css, and javascript, we will not be typing anything from scratch as aws has provided the codes for us. So we will be taking that code and creating a codecommit repo and copy the code into our repo where we can work with it
+### Step 2 : Add a policy to an IAM user to allow access to CodeCommit
+
+1. Go to IAM user
+2. Navigate to the permissions tab and click on add permissions
+3. Attach the policies directly
+4.You then search for codecomitpoweruser
+5. Add permissions
+This will give codecommit the access we need
+### Step 3 : Create Git credentials to allow HTTPS connections to CodeCommit
+1. Go to security credentials
+2. Scroll down to the https git credentials for AWS CodeCommit
+3. Click on generate credentials
+The generated credentials will allow us make https calls to codecommit.( download the credentials as we wil use them later)
+### Step 4 : Clone the CodeCommit repository using cloudshell
+1. Go to the codecommit repository we created
+2. Copy the url of the repo(go with the https version)
+when you click on ‘clone https’ it copies it and then we need to open a cloud shell( a command line interface that runs in the browser) at the top of the browser
+3. Open the cloud shell with is located to the right of the search bar. 
+4. Type in git clone and paste the url of the repository and hit enter
+5. You then type in the username you generated for codecommit as well as the password
+However it takes us to an directory in cloud shell that hosts the repository so we will have to change it to our created repository by using ‘cd’
+Cloning the repository created an empty folder and this is where our code files will end up
+
+### Step 5 : Copy the code from an s3 bucket to cloudshell
+1. So were going to download the files from an s3 bucket.
+2. We use ls to check the files and see that they are in the folder but not in the cloudcommit repo.
+3. To push them into the cloud commit repo we type ‘git add.’ And then ‘git commit’.
+4. After pushing the code to the repository
+You go back to the wildrydes repository and you seethe files loaded in there
+
+### Step 6 : Create a new app for hosting in AWS Amplify
+1. You open aws amplify, click on host web app
+2. Go to code commit and hit continue and select the wildrydes repository from the list of options and hit next
+3. Click on allow aws amplify to automatically deploy files hosted in the project root directory. This means when theres an update or change in the code file it automatically deploys. After doing that you hit next.
+4. This will take you to the review page where you just save and deploy
+5. You can click the link to check out the site in a new tab
+6. We are going to try and see if the continuous deployment is working. We do that by going to codecommit and navigating to the index.html file, clicking edit. You make whatever change you want and then fill in in the tabs which specify your name and email and then click on commit changes.
+7. It then triggers amplify which starts the build process. When its done, you go back to the site and hit refresh and see that the changes have been applied
 ### Creating Source and Designation s3 Buckets :
 
 1. Navigate to the S3 Console.
