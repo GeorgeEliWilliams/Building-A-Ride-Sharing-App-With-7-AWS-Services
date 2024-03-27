@@ -34,7 +34,9 @@ For getting the html,css, and javascript, we will not be typing anything from sc
 2. Navigate to the permissions tab and click on add permissions
 ![add permissions](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/57593f3d-ecf9-4690-acc2-72ec9784598d)
 3. Attach the policies directly
+![attach policies directly](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/58bf670d-610e-42f1-8b62-00fb3caa036c)
 4.You then search for codecomitpoweruser
+![codecommitpoweruser](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/8fc94313-a10a-4b9f-816d-8733bc5f2b40)
 5. Add permissions
 This will give codecommit the access we need
 ### Step 3 : Create Git credentials to allow HTTPS connections to CodeCommit
