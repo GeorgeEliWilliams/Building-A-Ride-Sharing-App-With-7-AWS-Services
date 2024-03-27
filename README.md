@@ -75,28 +75,41 @@ You go back to the wildrydes repository and you seethe files loaded in there
 
 ### Step 6 : Create a new app for hosting in AWS Amplify
 1. You open aws amplify, click on host web app
+![amplify](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/a249a08f-5091-4950-8f1a-a008148cf9fe)
 2. Go to code commit and hit continue and select the wildrydes repository from the list of options and hit next
+![go to codecommit](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/a0a15d14-4972-42ec-9635-d0182c3873d7)
 3. Click on allow aws amplify to automatically deploy files hosted in the project root directory. This means when theres an update or change in the code file it automatically deploys. After doing that you hit next.
+![click on allow aws amplify to automatically blah blah](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/b3a7287a-8ec3-474c-89d4-46fcd17ef162)
 4. This will take you to the review page where you just save and deploy
+![save and deploy](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/5960ff2f-4090-40be-bea2-2f0db35cacf2)
 5. You can click the link to check out the site in a new tab
+![checking out the site](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/57f5ee14-3ab9-4681-ba59-fe6209d61e5e)
 6. We are going to try and see if the continuous deployment is working. We do that by going to codecommit and navigating to the index.html file, clicking edit. You make whatever change you want and then fill in in the tabs which specify your name and email and then click on commit changes.
 7. It then triggers amplify which starts the build process. When its done, you go back to the site and hit refresh and see that the changes have been applied
+![amplify build deployment](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/29d29ca1-e7e7-4c24-b653-cfabe75d71c4)
 
 ### Step 7 : Setting up AWS Cognito for user authentification
 1. Now we need to work on a way to login and register as those fuctionalities haven’t been worked on. We will be using AWS Cognito(used to do authentication)
 2. We go over to aws cognito and then click on create user pool
+![create user pool](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/917a2b96-14f3-4267-b66f-116e4d222985)
+
 3. At the security requirements select cognito defaults for the passwork policy and no mfa to keep things simple and then go to next
+![cognito password policy](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/e9838f1b-a1b4-49d4-b615-9520c6906fe9)
+![no mfa](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/e4d472d3-d3a1-42a9-96e4-5d51089b53ae)
 4. leave all the defaults on the next page and click on next
 5. On the next page which is the message delivery page we will click on send email with cognito,leave all the defaults and then hit next
 6. On the next page which is the integrate your app page we will give a name to our user pool and then give an app client name as wildrydeswebapp. We will leave the other defaults. Then hit next
 7. Review and create the user pool.
+![review and create user pool](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/a973a313-1e68-4b1a-807e-c7af5c122f5f)
 8. Now we will click into the user pool.(Copythe user pool id)
 9. We then click on app integration and copy the client ID
+![client ID COPIED](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/92706f99-8373-4f97-9682-5ef44698f890)
 
 ### Step 8 : Updating the app configuration file to use the Amazon Cognito user pool
 1. Now we need to hook up cognito with our code by updating the config file in our application code to point to the dedicated user pool
 2. we go back to codecommit and open our repo and then navigate to the js file and then the config.js file
 3. Click on edit . you paste the user pool ID,user pool client ID, and the region and then commit the changes which will trigger amplify again
+![config js file updated](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/e5fae7b4-c703-418d-9386-a0cddd93fbbc)
 
 ### Step 9 : Testing Cognito integration by doing user registration and login
 1. Now you go over to the wild rydes site and click on giddyup to register
@@ -154,16 +167,25 @@ We will need to create a role for our lambda function to be able to write into o
 Now we go into our api and then create resource which is how we will hook it up to the lambda function
 
 1. Now we go into our api and then create resource which is how we will hook it up to the lambda function. 
+![create resource in api](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/2f144882-a61a-4938-b4f0-52681d59319e)
 2. We make sure to select cors when creating the resource and then hit create resource
+![select cors when creating the resource](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/1c6fd1c9-f49d-42be-b725-702679f09249)
 3. After creating the resource , we need to create a method. We click create method from inside the ride resource
+![create method from inside the resource](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/f0f5df38-365f-4a2d-87c1-ce217d833037)
 4. The method type will be a post type to integrate with the lambda function, select lambda as the integration type and then select the unicorns lambda function and then create method
+![create method in resource](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/fccc61d0-214a-4a8c-bdf4-10f39d135569)
 5. After creating the post method, select the method request card and then click on edit
+![select the method request card](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/557801e6-c681-482f-9153-c5127dc9cedb)
 6. We will authorize using the cognito user pool authorization
+![edit method request using the cognito user pool authorization](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/5d5f7db7-bcfe-4135-8148-736e5c7cb3ba)
 7. After its all said and done, we depLoy the API
+![NOW WE DEPLOY THE api](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/31a2793d-49ed-4a68-bf88-0f43d93e87c2)
 8. A pop up tab will show where you select stage s new stage and name it ‘dev’ and deploy
+![select stage as dev and then deploy](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/98db7696-f242-4e07-9a50-850698bf234e)
 9. Copy the invoke url 
+![copy invoke url](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/8517a6cf-1059-4865-972a-1f0124553a80)
 10. Now we go back to codecommit inside the config.js file and update the involve url with the one we copied from our api and commit the change
-
+![config js file updated](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/eef6479a-08c4-49bd-8c1c-7251696940f9)
 now to check if everything is working properly we go to our rides site and refresh
 after requesting your unicorn you can go check the dynamodb table to see if it was recorded.everything is working as it should
 
