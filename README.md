@@ -50,6 +50,8 @@ However it takes us to an directory in cloud shell that hosts the repository so 
 Cloning the repository created an empty folder and this is where our code files will end up
 
 ### Step 5 : Copy the code from an s3 bucket to cloudshell
+use this command to get the files:
+aws s3 cp s3://ttt-wildrydes/wildrydes-site ./ --recursive
 1. So were going to download the files from an s3 bucket.
 2. We use ls to check the files and see that they are in the folder but not in the cloudcommit repo.
 3. To push them into the cloud commit repo we type ‘git add.’ And then ‘git commit’.
