@@ -30,7 +30,9 @@ For getting the html,css, and javascript, we will not be typing anything from sc
 ### Step 2 : Add a policy to an IAM user to allow access to CodeCommit
 
 1. Go to IAM user
+![iam user](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/669e13fc-e4af-43bf-90f3-ca3255345494)
 2. Navigate to the permissions tab and click on add permissions
+![add permissions](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/57593f3d-ecf9-4690-acc2-72ec9784598d)
 3. Attach the policies directly
 4.You then search for codecomitpoweruser
 5. Add permissions
