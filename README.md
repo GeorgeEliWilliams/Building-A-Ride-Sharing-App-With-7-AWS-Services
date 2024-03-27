@@ -41,27 +41,37 @@ For getting the html,css, and javascript, we will not be typing anything from sc
 This will give codecommit the access we need
 ### Step 3 : Create Git credentials to allow HTTPS connections to CodeCommit
 1. Go to security credentials
+![security creds](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/4ae74a1d-8c00-48af-a511-16192bff682d)
 2. Scroll down to the https git credentials for AWS CodeCommit
+![https git creds](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/519e8bbe-d6b4-4720-a39e-4fbfe4fa2f04)
 3. Click on generate credentials
 The generated credentials will allow us make https calls to codecommit.( download the credentials as we wil use them later)
 ### Step 4 : Clone the CodeCommit repository using cloudshell
 1. Go to the codecommit repository we created
+![created repo](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/46b214ea-7432-476e-88a9-d8cac8da2a05)
+
 2. Copy the url of the repo(go with the https version)
+![url](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/5ca26321-5a8f-4300-a698-98a50ee88411)
 when you click on ‘clone https’ it copies it and then we need to open a cloud shell( a command line interface that runs in the browser) at the top of the browser
 3. Open the cloud shell with is located to the right of the search bar. 
 4. Type in git clone and paste the url of the repository and hit enter
 5. You then type in the username you generated for codecommit as well as the password
+![cli](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/bb40aa79-7009-4830-a842-e539c91057a5
 However it takes us to an directory in cloud shell that hosts the repository so we will have to change it to our created repository by using ‘cd’
 Cloning the repository created an empty folder and this is where our code files will end up
+![cd](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/d06004f4-1ef2-4334-be39-83a61f791979)
 
 ### Step 5 : Copy the code from an s3 bucket to cloudshell
 use this command to get the files:
 aws s3 cp s3://ttt-wildrydes/wildrydes-site ./ --recursive
 1. So were going to download the files from an s3 bucket.
+![files from s3](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/3b11a0f5-9554-4955-9e23-9c6796c27c56)
 2. We use ls to check the files and see that they are in the folder but not in the cloudcommit repo.
 3. To push them into the cloud commit repo we type ‘git add.’ And then ‘git commit’.
+![git push](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/c7499305-11ad-4576-86b1-c9b4ada2fd2d)
 4. After pushing the code to the repository
 You go back to the wildrydes repository and you seethe files loaded in there
+![repo](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/a2aa645f-47cb-467d-a12e-8bf35ad32139)
 
 ### Step 6 : Create a new app for hosting in AWS Amplify
 1. You open aws amplify, click on host web app
