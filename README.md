@@ -26,6 +26,7 @@ This project focuses on building a ride sharing app within the AWS ecosystem. Th
 ## Steps :
 ### Step 1 : Create a new repository in AWS CodeCommit
 For getting the html,css, and javascript, we will not be typing anything from scratch as aws has provided the codes for us. So we will be taking that code and creating a codecommit repo and copy the code into our repo where we can work with it
+![create repository](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/966b406f-3b8f-4b7a-b574-d53e2e6a0e24)
 ### Step 2 : Add a policy to an IAM user to allow access to CodeCommit
 
 1. Go to IAM user
