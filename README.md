@@ -56,7 +56,7 @@ when you click on ‘clone https’ it copies it and then we need to open a clou
 3. Open the cloud shell with is located to the right of the search bar. 
 4. Type in git clone and paste the url of the repository and hit enter
 5. You then type in the username you generated for codecommit as well as the password
-![cli](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/bb40aa79-7009-4830-a842-e539c91057a5
+![cli](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/bb40aa79-7009-4830-a842-e539c91057a5)
 However it takes us to an directory in cloud shell that hosts the repository so we will have to change it to our created repository by using ‘cd’
 Cloning the repository created an empty folder and this is where our code files will end up
 ![cd](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/d06004f4-1ef2-4334-be39-83a61f791979)
@@ -114,14 +114,21 @@ You go back to the wildrydes repository and you seethe files loaded in there
 ### Step 9 : Testing Cognito integration by doing user registration and login
 1. Now you go over to the wild rydes site and click on giddyup to register
 2. Fill in the details and cognito will send an email with the verification code.
+![cognito verification email](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/db73d1be-efb1-45b5-8b84-abce7c2629d1)
+
 3. Once you put in the details you will be routed to the login page where you wil need to login again
+![wildrydes login page after signing in](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/83d18837-df80-4fa0-b60d-530c6558f02f)
 
 ### Step 10 :  Implementing ride sharing functionality with Lambda and DynamoDB
 We will use a lambda function and a dynamodb database. The user will request a ride that will invoke the lambda fuction and the request will be stored In the dynamo table
 
 1. Go to dynamodb and navigate to tables where you create a new table
+![create tablr](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/2606cad1-4865-4875-bea3-0ce11cf5428d)
 2. You name the table Rides and give the partition key as RideId and leave everything as default and hit create table
+![partition key](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/cf02dd39-a229-4833-842b-9c3f31e22e24)
+
 3. Click into the created table, go to general information and additional info and copy the aws arn
+![created table](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/b4dcab88-0f1b-4849-85da-067cedfc0a49)
 
 ### Step 11 :  Creating an IAM role to be used for a Lambda execution role, allowing PutItem on DynamoDB table
 We will need to create a role for our lambda function to be able to write into our table so we would go to IAM
@@ -130,35 +137,50 @@ We will need to create a role for our lambda function to be able to write into o
 2. The trusted entity type will be aws service and the service will be lambda
 3. Now we look for a policy to attach to the role
 4. We select the aws basic lambda execution role and hit next
+![lambda basic execution role](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/e40a7643-eafe-42c4-8bdb-a4fca4500a64)
 5. We give the name of the role as wildrydeslambda and leave the defaults of everything else and create role
 6. Now we will open up the role and add some additional permissions. Go to add permissions and hit create inline policy
 7. You chose the service as dynamodb and then you select putitem and then add the arn
+![putitem](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/1c2fa143-456b-4945-b1b0-04e90442a4b9)
 8. You give the policy a name-dynamodbwriteaccess and create policy
+![dynamodbwriteaccess](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/b706fd3c-9b7c-4b03-a9d1-0a7bbc7089cf)
 
 ### Step 11 :  Creating a new Lambda function to choose a unicorn and write the ride sharing info to DynamoDB
 1. go to aws lambda and create a new lambda function by clicking create function
 2. We will author from scratch. The name of the function will be requestunicorn
+![creating the lambda function 1](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/59a0ff33-c95a-4f43-959c-a2e31991b4d0)
 3. For the runtime we use Node.js 16x
 4. For the execution role we will select ‘use an existing role’ which is the role we created in IAM and then hit create function
+![lambda execution role](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/05a012e5-fcff-461a-bb24-01b5e5429a4c)
 5. We then scroll down to the code source and replace the original lambda code with the code provided by aws( this can be found in the lambda.py file)
 6. deploy the changes
+![make sure to deploy the changes in lambda](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/178a1c30-ff36-49f9-b196-5ad492083d7d)
 
 ### Step 12 :  Deploying Lambda code and executing a test event
 1. Now we have to configure a test event
 2. Copy our test function and paste it in the json file and hit save
+![lambda test function](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/6b68ceeb-131f-48e4-a4ef-e98f2071cf69)
 3. Now we need to run the test and see that the test succeeded
+![test succeeded](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/6816e269-cc2b-41a5-8131-d20977e987a6)
 
 ### Step 13 :  Testing that items are saved to the DynamoDB table
 1. We then check the dynamodb table to see if everything was recorded properly
 2. In the rides table you click on explore table items
+![explore table items](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/7701f96a-c899-4ce2-8bf3-a29afb3de73d)
 3. When we scroll down we see the one item for the test
+![item in db table](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/761e345d-4915-4130-8b4a-56f28764d547)
 
 ### Step 14 :  Setting up API Gateway to invoke the ride sharing functionality
 1. We go to api gateway and then hit create new api
 2. Select rest api
+![select rest api](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/82af5734-0923-46c5-bee2-1efa4ed7c6df)
 3. Give the api a name ‘wildrydes’
 4. Select edge optimized and then create api
+![edge optimized and create](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/523a9c2e-8f96-4333-93e0-9842e029f106)
 5. Now we need to create an authorizer to authenticate calls api gateway uses that are returned by cognito
+![create authorizer](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/7b5d3250-a58a-4d29-a7e4-b22cc8a51cbc)
+![create authorizer 2](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/be1bcee4-7639-4f7a-8aad-4887fc21d5ae)
+
 6. After creating the authorizer, click into it to test if things are working
 7. Paste in the authorization token from the wildrydes page and hit test
 8. We get a feedback of 200 meaning everything is working fine
@@ -184,7 +206,7 @@ Now we go into our api and then create resource which is how we will hook it up 
 ![select stage as dev and then deploy](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/98db7696-f242-4e07-9a50-850698bf234e)
 9. Copy the invoke url 
 ![copy invoke url](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/8517a6cf-1059-4865-972a-1f0124553a80)
-10. Now we go back to codecommit inside the config.js file and update the involve url with the one we copied from our api and commit the change
+10. Now we go back to codecommit inside the config.js file and update the invoke url with the one we copied from our api and commit the change
 ![config js file updated](https://github.com/GeorgeEliWilliams/Building-A-Ride-Sharing-App-With-7-AWS-Services/assets/103576454/eef6479a-08c4-49bd-8c1c-7251696940f9)
 now to check if everything is working properly we go to our rides site and refresh
 after requesting your unicorn you can go check the dynamodb table to see if it was recorded.everything is working as it should
